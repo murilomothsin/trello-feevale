@@ -1,5 +1,12 @@
-var app = angular.module("Trello", [])
+var app = angular.module("Trello", ["ui.router"])
 
-app.controller("TestCtrl", function($scope){
-    $scope.Teste = "Controller"; 
-})
+app.config(function($stateProvider, $urlRouterProvider) {
+  
+    $stateProvider
+        .state('home', {
+        url: "/",
+        templateUrl: "views/home/home.html"
+        });
+
+    $urlRouterProvider.otherwise("/");
+});
