@@ -1,0 +1,20 @@
+{
+  "name": "trello",
+  "description": "",
+  "main": "app/index.html",
+  "authors": [
+    "Murilo Mothsin"
+  ],
+  "license": "MIT",
+  "keywords": [],
+  "homepage": "",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {}
+}
