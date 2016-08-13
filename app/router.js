@@ -13,7 +13,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             views: {
                 "navbar": { templateUrl: "app/views/nav.html" },
                 "content": { 
-                    templateUrl: "app/views/register/home.html",
+                    templateUrl: "app/views/register/form.html",
                     controller: "RegisterCtrl"
                 }
             }
