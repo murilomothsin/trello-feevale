@@ -1,1 +1,1 @@
-var app = angular.module("Trello", ["ui.router", "LocalStorageModule"])
+var app = angular.module("Trello", ["ui.router", "LocalStorageModule", "ngDraggable"])

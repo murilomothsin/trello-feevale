@@ -1,0 +1,62 @@
+<button ng-click="save()" class="btn btn-primary pull-right">Salvar Projeto</button>
+<h3 ng-hide="changeProject">
+  <span>
+    {{project.name}}
+    <small ng-init="changeProject = false" ng-click="changeProject = true;" class="cursor-pointer">[E]</small>
+  </span>
+</h3>
+<div ng-show="changeProject">
+  <input name="name" class="form-control" ng-model="project.name" placeholder="Nome do seu projeto">
+  <textarea name="description" class="form-control" ng-model="project.description" placeholder="Descreva seu projeto"></textarea>
+  <a ng-click="changeProject = false;" class="btn btn-success">Feito!</a>
+</div>
+<hr>
+
+<div class="row" >
+  
+  <div ng-hide="board.deleted" ng-repeat="board in boards" class="col-md-3 panel panel-default" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)">
+    <div class="panel-heading" >
+      <div ng-hide="changeBoard">
+        <span class="cursor-move" ng-drag="true" ng-drag-data="board">[A]</span>
+        <span ng-init="changeBoard = false;" ng-click="changeBoard = true">{{board.name}}</span>
+        <span class="pull-right cursor-pointer" ng-click="removeBoard($index);">
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </span>
+      </div>
+      <div ng-show="changeBoard">
+        <input name="board" ng-model="board.name" placeholder="Nome do quadro">
+        <a ng-click="changeBoard = false" class="btn btn-success">Feito!</a>
+      </div>
+    </div>
+    <table class="table">
+      <tr ng-hide="task.deleted" ng-class="{'inactive': task.complete}" ng-repeat="task in board.tasks">
+        <td width="5%">
+          <input type="checkbox" ng-model="task.complete"></input>
+        </td>
+        <td width="85%">
+          <span ng-init="changeTask" ng-hide="changeTask" ng-click="changeTask = true">{{task.name}}</span>
+          <span ng-show="changeTask">
+            <input name="task" ng-model="task.name" placeholder="Nome da tarefa">
+            <a ng-click="changeTask = false;" class="btn btn-success">Feito!</a>
+          </span>
+        </td>
+        <td width="10%"><i class="fa fa-trash-o cursor-pointer" ng-click="removeTask(board, $index)" aria-hidden="true"></i></td>
+      </tr>
+    </table>
+    <table class="table">
+      <tr>
+        <td>
+          <input name="task" ng-model="taskName" placeholder="Nome da tarefa">
+        </td>
+        <td>
+          <button class="btn btn-success" ng-click="addTask(board, taskName); taskName = '';">Adicionar</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="col-md-3 panel panel-default cursor-pointer" style="height: 100px;" ng-click="newBoard()">
+    <div class="panel-body text-center" style="padding: 40px;">Adicionar novo quadro</div>
+  </div>
+
+</div>

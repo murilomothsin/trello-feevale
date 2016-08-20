@@ -75,6 +75,27 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     return null;
                 }
             }
+        })
+        .state('projects-edit', { //projects-edit({id: 'adiaosjdias'})
+            url: "/projects/{id:string}/edit/",
+            views: {
+                "navbar": { 
+                    templateUrl: "app/views/nav.html",
+                    controller: "NavCtrl" 
+                },
+                "content": {
+                    templateUrl: "app/views/projects/edit.html",
+                    controller: "ProjectController"
+                }
+            },
+            resolve: {
+                isLogged: function(User){
+                    return User.is_logged();
+                },
+                ProjectList: function(Project){
+                    return null;
+                }
+            }
         });
 
     $urlRouterProvider.otherwise("/");
