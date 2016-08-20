@@ -45,6 +45,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     templateUrl: "app/views/projects/index.html",
                     controller: "ProjectController"
                 }
+            },
+            resolve: {
+                isLogged: function(User){
+                    return User.is_logged();
+                }
             }
         });
 

@@ -1,9 +1,8 @@
-app.controller("ProjectController", function($scope, $state, $stateParams){
+app.controller("ProjectController", function($scope, $state, $stateParams, isLogged){
   $scope.project = {}
   $scope.boards = []
 
-  if(projectList !== undefined)
-    $scope.projects = projectList.data.projects;
+  console.log(isLogged);
 
   if($stateParams.id !== undefined){
     ProjectService.get($stateParams.id).then(function(dataProj){
