@@ -62,3 +62,36 @@
   </div>
 
 </div>
+
+<div class="modal" tabindex="-1" role="dialog" id="modal-team">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Equipe</h4>
+      </div>
+      <div class="modal-body">
+          <input type="text" class="form-control" ng-model="nameFilter.name" placeholder="Nome do usuário">
+          <input type="text" class="form-control" ng-model="nameFilter.email" placeholder="E-mail">
+          <table class="table">
+              <tr>
+                  <th></th>
+                  <th>Nome</th>
+                  <th>E-mail</th>
+              </tr>
+              <tr ng-click="addRemoveTeamMember(user._id)" ng-repeat="user in users | filter:nameFilter">
+                  <td>
+                      <i class="fa fa-check-square-o" ng-show="checkTeam(user._id)"></i>
+                      <i class="fa fa-square-o" ng-show="!checkTeam(user._id)"></i>
+                  </td>
+                  <td>{{user.name}}</td>
+                  <td>{{user.email}}</td>
+              </th>
+          </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>

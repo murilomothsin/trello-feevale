@@ -1,4 +1,4 @@
-app.controller("ProjectController", function($scope, $state, $stateParams, isLogged, ProjectList, Project){
+app.controller("ProjectController", function($scope, $state, $stateParams, isLogged, ProjectList, Project, User){
   $scope.project = {}
   $scope.boards = []
 
@@ -14,6 +14,29 @@ app.controller("ProjectController", function($scope, $state, $stateParams, isLog
       //var id = Flash.create('danger', "Erro: "+err.data.data+"!", 0, {class: 'flash-position'});
       $state.go('projects');
     })
+  }
+
+  $scope.addTeam = function(){
+    User.getAll().then(function(data){
+      console.log(data);
+      $scope.users = data.data;
+      $("#modal-team").modal('show');
+    })
+  }
+
+  $scope.addRemoveTeamMember = function(UserId){
+    if(UserId == $scope.project.creator)
+      return ;
+    if($scope.project.team.indexOf(UserId) !== -1){
+      $scope.project.team.splice($scope.project.team.indexOf(UserId), 1);
+    }else
+      $scope.project.team.push(UserId);
+  }
+
+  $scope.checkTeam = function(UserId){
+    if(UserId == $scope.project.creator)
+      return true;
+    return $scope.project.team.indexOf(UserId) !== -1;
   }
 
   $scope.addTask = function(board, name){
