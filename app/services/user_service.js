@@ -1,10 +1,23 @@
-app.service("UserService", function($http){
+app.service("User", function($http, localStorageService){
 
   this.register = function(params){
-    return $http.post("http://localhost:3000/users/register", params);
+    return $http.post("http://localhost:3000/users/sign_up", params);
   }
 
   this.login = function(params){
-    return $http.post("http://localhost:3000/users/login", params);
+    return $http.post("http://localhost:3000/users/sign_in", params);
+  }
+
+  this.getAll = function(){
+    return $http.get("http://localhost:3000/users/");
+  }
+
+  this.get = function(id){
+    return $http.get("http://localhost:3000/users/"+id);
+  }
+
+  this.is_logged = function(){
+    var token = localStorageService.get("token");
+    return $http.post("http://localhost:3000/users/valid_token", {token: token});
   }
 });

@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-3 panel panel-default project-display cursor-pointer" ui-sref="projects-new">
+    <div class="panel-body">
+      <div style="padding: 50px;">
+        <a ><b>Adicionar Novo Projeto</b></a>
+      </div>
+    </div>
+  </div>
+  <div ng-repeat="project in projects" class="col-md-3 panel panel-default project-display cursor-pointer">
+    <div class="panel-body">
+      <div class="text-center"><a ui-sref="projects-edit({id: project._id})"><b>{{project.name}}</b></a></div>
+      <div>
+        <p class="text-justify">{{project.description}}</p>
+      </div>
+      <span><i>{{project.author}}</i></span>
+    </div>
+  </div>
+</div>
