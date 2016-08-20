@@ -49,6 +49,30 @@ app.config(function($stateProvider, $urlRouterProvider) {
             resolve: {
                 isLogged: function(User){
                     return User.is_logged();
+                },
+                ProjectList: function(Project){
+                    return Project.getAll();
+                }
+            }
+        })
+        .state('projects-new', {
+            url: "/projects/new",
+            views: {
+                "navbar": { 
+                    templateUrl: "app/views/nav.html",
+                    controller: "NavCtrl" 
+                },
+                "content": {
+                    templateUrl: "app/views/projects/new.html",
+                    controller: "ProjectController"
+                }
+            },
+            resolve: {
+                isLogged: function(User){
+                    return User.is_logged();
+                },
+                ProjectList: function(Project){
+                    return null;
                 }
             }
         });

@@ -1,11 +1,12 @@
-app.controller("ProjectController", function($scope, $state, $stateParams, isLogged){
+app.controller("ProjectController", function($scope, $state, $stateParams, isLogged, ProjectList, Project){
   $scope.project = {}
   $scope.boards = []
 
-  console.log(isLogged);
+  if(ProjectList !== null)
+    $scope.projects = ProjectList.data.projects;
 
   if($stateParams.id !== undefined){
-    ProjectService.get($stateParams.id).then(function(dataProj){
+    Project.get($stateParams.id).then(function(dataProj){
       $scope.project = dataProj.data.project;
       $scope.boards = dataProj.data.project.boards;
     }, function(err){
@@ -35,7 +36,7 @@ app.controller("ProjectController", function($scope, $state, $stateParams, isLog
 
   $scope.save = function(){
     $scope.project.boards = $scope.boards;
-    ProjectService.save($scope.project).then(function(dataProj){
+    Project.save($scope.project).then(function(dataProj){
       console.log(dataProj);
       //var id = Flash.create('success', "Projeto salvo!", 3000, {class: 'flash-position'});
       $state.go('projects');
@@ -48,6 +49,7 @@ app.controller("ProjectController", function($scope, $state, $stateParams, isLog
     $scope.boards.push({name: $scope.boardName});
     $scope.boardName = '';
   }
+
   $scope.removeBoard = function(index){
     if($scope.boards[index]._id !== undefined){
       $scope.boards[index].deleted = true;

@@ -1,0 +1,39 @@
+<div class="panel panel-default col-md-offset-1 col-md-10">
+  <div class="panel-body">
+    <h3>Adicionar Projeto</h3>
+
+    <div class="row">
+      <div class="col-md-12">
+        <form class="form" ng-submit="save()">
+          <input type="text" class="form-control" name="name" ng-model="project.name" placeholder="Nome" />
+          <textarea name="description" class="form-control" ng-model="project.description" placeholder="Descrição"></textarea>
+          
+          <div class="col-md-12 panel panel-default">
+            <div class="panel-heading">
+              <strong>Quadros</strong>
+            </div>
+            <table class="table">
+              <tr ng-repeat="board in boards">
+                <td>{{board.name}}</td>
+                <td>
+                  <i class="cursor-pointer pull-right" ng-click="removeBoard($index)">X</i>
+                </td>
+              </tr>
+              <tr>
+                <td width="98%">
+                  <input class="form-control" name="board" ng-model="boardName" placeholder="Nome do quadro">
+                </td>
+                <td width="2%">
+                  <a class="btn btn-success" ng-click="addBoard()">Adicionar</a>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Salvar Projeto</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

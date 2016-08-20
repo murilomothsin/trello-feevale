@@ -1,7 +1,17 @@
-app.service("ProjectService", function($http, localStorageService){
+app.service("Project", function($http, localStorageService){
 
   this.getAll = function(){
+    console.log("asd")
     return $http.get("http://localhost:3000/projects", { headers: { 'Authorization': localStorageService.get('token') } });
+    /*
+    $http({
+      method: 'GET',
+      url: "http://localhost:3000/projects",
+      headers: {
+        'Authorization': localStorageService.get('token')
+      }
+    })
+    */
   }
 
   this.get = function(id){
