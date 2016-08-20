@@ -53,7 +53,7 @@ app.controller("ProjectController", function($scope, $state, $stateParams, isLog
 
   $scope.newBoard = function(){
     var name = prompt("Nome do novo quadro?");
-    if(name !== '')
+    if(name !== '' && name !== null)
       $scope.boards.push({name: name, tasks: []});
   }
 
@@ -91,7 +91,9 @@ app.controller("ProjectController", function($scope, $state, $stateParams, isLog
     }
   }
 
-  $scope.onDropTaskComplete = function (index, obj, evt, board, indexBoard) {
+  $scope.onDropTaskComplete = function (index, obj, evt, indexBoard) {
+    console.log(indexBoard);
+    console.log(obj);
     if(obj.tasks === undefined){
       var otherObj = $scope.boards[indexBoard].tasks[index];
       var otherIndex = $scope.boards[indexBoard].tasks.indexOf(obj);

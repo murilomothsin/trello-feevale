@@ -30,7 +30,7 @@
       </div>
     </div>
     <table class="table" ng-init="indexBoard = $index">
-      <tr ng-drop="true" ng-drop-success="onDropTaskComplete($index, $data,$event,board, indexBoard)" ng-hide="task.deleted" ng-class="{'inactive': task.complete}" ng-repeat="task in board.tasks">
+      <tr ng-drop="true" ng-drop-success="onDropTaskComplete($index, $data,$event, indexBoard)" ng-hide="task.deleted" ng-class="{'inactive': task.complete}" ng-repeat="task in board.tasks">
         <td width="5%"><i ng-drag="true" ng-drag-data="task"><i class="fa fa-bars" aria-hidden="true"></i></td>
         <td width="5%">
           <input type="checkbox" ng-model="task.complete"></input>
