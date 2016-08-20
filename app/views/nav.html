@@ -1,5 +1,25 @@
-<ul class="nav nav-pills">
-  <li role="presentation" ui-sref-active="active"><a ui-sref="home">Home</a></li>
-  <li role="presentation" ui-sref-active="active"><a ui-sref="register">Registrar</a></li>
-  <li role="presentation" ui-sref-active="active"><a href="#">Login</a></li>
-</ul>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Trello</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul ng-hide="is_logged" class="nav navbar-nav navbar-right">
+        <li><a ui-sref="register">Registrar</a></li>
+        <li><a ui-sref="login">Entrar</a></li>
+      </ul>
+
+      <ul ng-show="is_logged" class="nav navbar-nav navbar-right">
+        <li><a ui-sref="projects">Projetos</a></li>
+        <li><a href ng-click="Logout()">Logout</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>

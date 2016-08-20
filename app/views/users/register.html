@@ -1,0 +1,13 @@
+<div class="col-md-6 col-md-offset-3 panel panel-default">
+  <div class="panel-body">
+    <h3>Criar uma conta</h3>
+    <form class="form-signin" role="form" ng-submit="Register()">
+      <input type="text" class="form-control" ng-model="user.name" placeholder="Nome" required="" autofocus=""> <br />
+      <input type="text" class="form-control" ng-model="user.username" placeholder="Usuário" required="" autofocus=""> <br />
+      <input type="email" class="form-control" ng-model="user.email" placeholder="Email" required="" autofocus=""> <br />
+      <input type="password" class="form-control" ng-model="user.password" placeholder="Senha" required=""> <br />
+      <div class="text-danger text-center" ng-show="errors">{{errors}}</div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Criar Conta</button>
+    </form>
+  </div>
+</div>

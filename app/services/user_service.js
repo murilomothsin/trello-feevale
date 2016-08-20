@@ -1,11 +1,10 @@
-app.service("User", function($http){
+app.service("UserService", function($http){
 
-    this.New = function(user){
-        return $http({
-                    method: 'POST',
-                    url: 'http://localhost:3000/users',
-                    data: user
-                });
-    } 
+  this.register = function(params){
+    return $http.post("http://localhost:3000/users/register", params);
+  }
 
-})
+  this.login = function(params){
+    return $http.post("http://localhost:3000/users/login", params);
+  }
+});

@@ -1,13 +1,13 @@
-app.controller("RegisterCtrl", function($scope, User){
+app.controller("UserCtrl", function($scope, User){
     $scope.user = {};
 
-    $scope.Save = function(){
+    $scope.Register = function(event){
         console.log($scope.user);
-        User.New($scope.user).then(function(data){
-            console.log(data);
-        }, function(err){
-            console.log("Error");
-            console.log(err);
+        UserService.register($scope.user).then(function(dataUser){
+            console.log(dataUser);
+            $state.go("login");
+        }, function(error){
+            $scope.errors = error.data.data;
         })
     }
 });

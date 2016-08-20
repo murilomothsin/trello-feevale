@@ -1,5 +1,5 @@
 app.config(function($stateProvider, $urlRouterProvider) {
-  
+
     $stateProvider
         .state('home', {
             url: "/",
@@ -12,9 +12,19 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: "/register",
             views: {
                 "navbar": { templateUrl: "app/views/nav.html" },
-                "content": { 
-                    templateUrl: "app/views/register/form.html",
-                    controller: "RegisterCtrl"
+                "content": {
+                    templateUrl: "app/views/users/register.html",
+                    controller: "UserCtrl"
+                }
+            }
+        })
+        .state('login', {
+            url: "/login",
+            views: {
+                "navbar": { templateUrl: "app/views/nav.html" },
+                "content": {
+                    templateUrl: "app/views/users/login.html",
+                    controller: "UserCtrl"
                 }
             }
         });
