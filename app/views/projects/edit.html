@@ -1,4 +1,5 @@
 <button ng-click="save()" class="btn btn-primary pull-right">Salvar Projeto</button>
+<button ng-click="addTeam()" class="btn btn-default pull-right">Equipe</button>
 <h3 ng-hide="changeProject">
   <span>
     {{project.name}}
@@ -17,7 +18,7 @@
   <div ng-hide="board.deleted" ng-repeat="board in boards" class="col-md-3 panel panel-default" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)">
     <div class="panel-heading" >
       <div ng-hide="changeBoard">
-        <span class="cursor-move" ng-drag="true" ng-drag-data="board">[A]</span>
+        <span class="cursor-move" ng-drag="true" ng-drag-data="board"><i class="fa fa-bars" aria-hidden="true"></i></span>
         <span ng-init="changeBoard = false;" ng-click="changeBoard = true">{{board.name}}</span>
         <span class="pull-right cursor-pointer" ng-click="removeBoard($index);">
           <i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -28,9 +29,9 @@
         <a ng-click="changeBoard = false" class="btn btn-success">Feito!</a>
       </div>
     </div>
-    <table class="table">
-      <tr ng-drop="true" ng-drop-success="onDropTaskComplete($index, $data,$event,board)" ng-hide="task.deleted" ng-class="{'inactive': task.complete}" ng-repeat="task in board.tasks">
-        <td width="5%"><i ng-drag="true" ng-drag-data="task">[M]</i></td>
+    <table class="table" ng-init="indexBoard = $index">
+      <tr ng-drop="true" ng-drop-success="onDropTaskComplete($index, $data,$event,board, indexBoard)" ng-hide="task.deleted" ng-class="{'inactive': task.complete}" ng-repeat="task in board.tasks">
+        <td width="5%"><i ng-drag="true" ng-drag-data="task"><i class="fa fa-bars" aria-hidden="true"></i></td>
         <td width="5%">
           <input type="checkbox" ng-model="task.complete"></input>
         </td>

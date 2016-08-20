@@ -60,16 +60,20 @@ app.controller("ProjectController", function($scope, $state, $stateParams, isLog
 
   // Quando um quadro é solto, o Array é reordenado
   $scope.onDropComplete = function (index, obj, evt) {
-    var otherObj = $scope.boards[index];
-    var otherIndex = $scope.boards.indexOf(obj);
-    $scope.boards[index] = obj;
-    $scope.boards[otherIndex] = otherObj;
+    if(obj.tasks !== undefined){
+      var otherObj = $scope.boards[index];
+      var otherIndex = $scope.boards.indexOf(obj);
+      $scope.boards[index] = obj;
+      $scope.boards[otherIndex] = otherObj;
+    }
   }
 
-$scope.onDropTaskComplete = function (index, obj, evt, board) {
-    var otherObj = board.tasks[index];
-    var otherIndex = board.tasks.indexOf(obj);
-    board.tasks[index] = obj;
-    board.tasks[otherIndex] = otherObj;
+  $scope.onDropTaskComplete = function (index, obj, evt, board, indexBoard) {
+    if(obj.tasks === undefined){
+      var otherObj = $scope.boards[indexBoard].tasks[index];
+      var otherIndex = $scope.boards[indexBoard].tasks.indexOf(obj);
+      $scope.boards[indexBoard].tasks[index] = obj;
+      $scope.boards[indexBoard].tasks[otherIndex] = otherObj;
+    }
   }
 });
