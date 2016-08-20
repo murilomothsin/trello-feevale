@@ -7,3 +7,16 @@
 [ng-drop].drag-enter {
   border: solid 5px red;
 }
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.cursor-move{
+  cursor: move;
+}
+
+.inactive {
+  opacity: 0.75;
+  text-decoration: line-through;
+}

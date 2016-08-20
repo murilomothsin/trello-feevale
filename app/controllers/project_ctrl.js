@@ -65,4 +65,11 @@ app.controller("ProjectController", function($scope, $state, $stateParams, isLog
     $scope.boards[index] = obj;
     $scope.boards[otherIndex] = otherObj;
   }
+
+$scope.onDropTaskComplete = function (index, obj, evt, board) {
+    var otherObj = board.tasks[index];
+    var otherIndex = board.tasks.indexOf(obj);
+    board.tasks[index] = obj;
+    board.tasks[otherIndex] = otherObj;
+  }
 });

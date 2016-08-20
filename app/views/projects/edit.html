@@ -29,11 +29,12 @@
       </div>
     </div>
     <table class="table">
-      <tr ng-hide="task.deleted" ng-class="{'inactive': task.complete}" ng-repeat="task in board.tasks">
+      <tr ng-drop="true" ng-drop-success="onDropTaskComplete($index, $data,$event,board)" ng-hide="task.deleted" ng-class="{'inactive': task.complete}" ng-repeat="task in board.tasks">
+        <td width="5%"><i ng-drag="true" ng-drag-data="task">[M]</i></td>
         <td width="5%">
           <input type="checkbox" ng-model="task.complete"></input>
         </td>
-        <td width="85%">
+        <td width="80%">
           <span ng-init="changeTask" ng-hide="changeTask" ng-click="changeTask = true">{{task.name}}</span>
           <span ng-show="changeTask">
             <input name="task" ng-model="task.name" placeholder="Nome da tarefa">
