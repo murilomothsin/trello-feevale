@@ -10,12 +10,13 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul ng-hide="is_logged" class="nav navbar-nav navbar-right">
+      <ul ng-hide="logged" class="nav navbar-nav navbar-right">
         <li><a ui-sref="register">Registrar</a></li>
         <li><a ui-sref="login">Entrar</a></li>
       </ul>
 
-      <ul ng-show="is_logged" class="nav navbar-nav navbar-right">
+      <ul ng-show="logged" class="nav navbar-nav navbar-right">
+        <li><a>{{name}}</a></li>
         <li><a ui-sref="projects">Projetos</a></li>
         <li><a href ng-click="Logout()">Logout</a></li>
       </ul>

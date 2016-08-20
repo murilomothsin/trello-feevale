@@ -14,7 +14,9 @@ app.controller("UserCtrl", function($scope, $state, localStorageService, User){
     $scope.Login = function(){
         console.log($scope.user);
         User.login($scope.user).then(function(dataUser){
+            console.log(dataUser);
             localStorageService.set("token", dataUser.data.token);
+            localStorageService.set("name", dataUser.data.user.name);
             $state.go("projects");
         }, function(err){
             console.log(err);

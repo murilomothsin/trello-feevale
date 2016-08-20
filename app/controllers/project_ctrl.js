@@ -1,4 +1,4 @@
-app.controller("ProjectController", function($scope, $state, $stateParams, isLogged, projectList, ProjectService){
+app.controller("ProjectController", function($scope, $state, $stateParams){
   $scope.project = {}
   $scope.boards = []
 

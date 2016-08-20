@@ -4,14 +4,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('home', {
             url: "/",
             views: {
-                "navbar": { templateUrl: "app/views/nav.html" },
+                "navbar": { templateUrl: "app/views/nav.html", controller: "NavCtrl" },
                 "content": { templateUrl: "app/views/home/home.html" }
             }
         })
         .state('register', {
             url: "/register",
             views: {
-                "navbar": { templateUrl: "app/views/nav.html" },
+                "navbar": { 
+                    templateUrl: "app/views/nav.html",
+                    controller: "NavCtrl" 
+                },
                 "content": {
                     templateUrl: "app/views/users/register.html",
                     controller: "UserCtrl"
@@ -21,7 +24,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('login', {
             url: "/login",
             views: {
-                "navbar": { templateUrl: "app/views/nav.html" },
+                "navbar": { 
+                    templateUrl: "app/views/nav.html",
+                    controller: "NavCtrl" 
+                },
                 "content": {
                     templateUrl: "app/views/users/login.html",
                     controller: "UserCtrl"
@@ -31,19 +37,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('projects', {
             url: "/projects",
             views: {
-                "navbar": { templateUrl: "app/views/nav.html" },
+                "navbar": { 
+                    templateUrl: "app/views/nav.html",
+                    controller: "NavCtrl" 
+                },
                 "content": {
                     templateUrl: "app/views/projects/index.html",
-                    controller: "ProjectService"
+                    controller: "ProjectController"
                 }
-            },
-            resolve: {
-              isLogged: function(User){
-                return User.is_logged();
-              },
-              projectList: function(ProjectService){
-                return ProjectService.getAll();
-              }
             }
         });
 
